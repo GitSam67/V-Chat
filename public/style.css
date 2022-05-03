@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: black;
+}
+p{
+    text-align : center;
+}
+#logoname{
+    margin: 0px 10px;
+}
+
+.chatbox{
+    border: 2px solid rgb(9, 132, 189);
+    width: 70%;
+    margin: auto;
+    margin-top: 2px;
+    height: 70vh;
+    overflow-y: auto;
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+}
+
+#text{
+    border: 2px solid black;
+}
+
+form{
+    margin: 10px;
+}
+
+
+.chatbox h4{
+    text-align: center;
+}
+
+.chat{
+    margin: 10px;
+    width: 25%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(9, 132, 189);
+    color: white;
+    text-align: center;
+}
+.right{
+    float: right;
+    clear: both;
+}
+.left{
+    float: left;
+    clear: both;
+}
