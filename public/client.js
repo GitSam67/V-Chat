@@ -1,4 +1,4 @@
-var socket = io('http://localhost:8000');
+var socket = io('https://gitsam67.github.io/V-Chat/public/');
 var audio = new Audio('tone.mp3');
 
 var form = document.getElementById('form');
