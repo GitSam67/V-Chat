@@ -33,9 +33,12 @@ form{
     margin: 10px;
 }
 
-
 .chatbox h4{
     text-align: center;
+}
+
+.col-12{
+    padding-right: 0px;
 }
 
 .chat{
@@ -54,4 +57,15 @@ form{
 .left{
     float: left;
     clear: both;
+}
+
+@media only screen and (max-width: 575px){
+    .col-12{
+        max-width: 60%;
+        margin-left: 15%;
+        padding-right: 15px;
+    }
+    .col{
+        padding-left: 0px;
+    }
 }
