@@ -25,8 +25,6 @@ io.on('connection', socket =>{
     });
 });
 
-app.use(express.static("public"));
-
 server.listen(8000, ()=>{
     console.log("Server runnning on http://localhost:8000");
 });
