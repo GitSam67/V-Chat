@@ -37,11 +37,15 @@
         <form id="form">
             <div class="form-group row">
                 <div class="col-12 col-sm-2"></div>
-                <div class="col-12 col-sm-7">
+                <div class="col-12 col-sm-6">
                     <input type="text" class="form-control" id="text" placeholder="Type your message">
                 </div>
+                <div class="col-12 col-sm-1">
+                    <input class="form-control file" type="file" id="formFile" hidden>
+                    <label for="formFile"><i class="fa-solid fa-paperclip fa-2x"></i></label>
+                </div>
                 <div class="col col-sm">
-                    <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i></button>
+                    <button type="submit" class="btn"><i class="fa-solid fa-paper-plane fa-lg"></i></button>
                 </div>
             </div>
         </form>

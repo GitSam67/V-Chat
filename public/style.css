@@ -59,6 +59,17 @@ form{
     clear: both;
 }
 
+label{
+    background-color: white;
+    cursor: pointer;
+    color: black;
+    height: 35px;
+    border: 2px solid white;
+    border-radius: 3px;
+    padding: 0px 5px;
+    margin: 0px 19px;
+}
+
 @media only screen and (max-width: 575px){
     .col-12{
         max-width: 60%;

@@ -3,6 +3,7 @@ var audio = new Audio('tone.mp3');
 
 var form = document.getElementById('form');
 var input = document.getElementById('text');
+var file = document.getElementById('formFile');
 var container = document.querySelector('.chatbox');
 
 form.addEventListener('submit', (e) => {
