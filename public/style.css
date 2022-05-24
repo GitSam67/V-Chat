@@ -41,6 +41,11 @@ form{
     padding-right: 0px;
 }
 
+.col-sm-1{
+    margin-left: -5px;
+    margin-right: -9px;
+}
+
 .chat{
     margin: 10px;
     width: 25%;
@@ -63,11 +68,29 @@ label{
     background-color: white;
     cursor: pointer;
     color: black;
-    height: 35px;
+    height: 37px;
     border: 2px solid white;
-    border-radius: 3px;
-    padding: 0px 5px;
-    margin: 0px 19px;
+    border-radius: 4px;
+    padding: 4px 9px;
+    margin: 0px 15px;
+}
+
+label:hover{
+    border-color:rgb(9, 132, 189);
+    background-color: black;
+    color: white;
+}
+
+.btn:hover{
+    border-color:rgb(9, 132, 189);
+    background-color: black;
+    color: white;
+}
+
+#text:hover{
+    border-color:rgb(9, 132, 189);
+    background-color: black;
+    color: white;
 }
 
 @media only screen and (max-width: 575px){
