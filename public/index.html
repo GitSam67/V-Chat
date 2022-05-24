@@ -25,11 +25,29 @@
             <span class="navbar-brand h1 text-white" id="logoname">V-Chat</span>
         </a>
     </nav>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Join V-Chat meeting</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="form2">
+                        <div class="form-group">
+                            <input type="text" id="nametext" class="form-control" placeholder="Enter your Name">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="join">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="chatbox">
             <h4>Welcome to Chat Arena</h4>
             <p>// Happy Chatting //</p>
-            <div class="chat right">  
+            <div class="chat right">
             </div>
             <div class="chat left">
             </div>
@@ -42,32 +60,17 @@
                 </div>
                 <div class="col-12 col-sm-1">
                     <input class="form-control file" type="file" id="formFile" hidden>
-                    <label for="formFile"><i class="fa-solid fa-paperclip fa-xl" data-toggle="tooltip" data-placement="bottom" title="Attach file"></i></label>
+                    <label for="formFile"><i class="fa-solid fa-paperclip fa-xl" data-toggle="tooltip"
+                            data-placement="bottom" title="Attach file"></i></label>
                 </div>
                 <div class="col col-sm">
-                    <button type="submit" class="btn" data-type="tooltip" data-placement="bottom" title="Send"><i class="fa-solid fa-paper-plane fa-lg"></i></button>
+                    <button type="submit" class="btn" data-type="tooltip" data-placement="bottom" title="Send"><i
+                            class="fa-solid fa-paper-plane fa-lg"></i></button>
                 </div>
             </div>
         </form>
     </div>
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Join V-Chat meeting</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" id="nametext" class="form-control" placeholder="Enter your Name">
-                        </div>
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Join</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Bootstrap JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -81,17 +84,23 @@
         crossorigin="anonymous"></script>
 
     <!-- Socket.io Client bundle CDN link -->
-    <script defer src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+        integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+        crossorigin="anonymous"></script>
 
     <script defer src="client.js"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $("#myModal").modal('show');
         });
         $("#myModal").modal({
-            backdrop : 'static',
-            keyboard : false
+            backdrop: 'static',
+            keyboard: false
+        });
+        $("#join").on('click', function (e) {
+            e.preventDefault();
+            $("#myModal").modal('hide');
         });
     </script>
 

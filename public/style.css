@@ -93,6 +93,10 @@ label:hover{
     color: white;
 }
 
+body.modal-open .container{
+    filter : blur(5px);
+}
+
 @media only screen and (max-width: 575px){
     .col-12{
         max-width: 60%;

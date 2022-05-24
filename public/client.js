@@ -6,10 +6,11 @@ var input = document.getElementById('text');
 var fileInput = document.getElementById('formFile');
 var container = document.querySelector('.chatbox');
 var username = document.getElementById('nametext');
+var btn = document.getElementById('join');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(input.value!=''){
+    if (input.value != '') {
         var message = input.value;
         append(`You: ${message}`, 'right');
         if (input.value) {
@@ -17,7 +18,7 @@ form.addEventListener('submit', (e) => {
             input.value = '';
         }
     }
-    else{
+    else {
         var file = fileInput.value;
         append(`You: ${file}`, 'right');
         if (fileInput.value) {
@@ -42,8 +43,11 @@ socket.on('user-joined', name => {
     append(`${name} joined the chat`, 'right');
 });
 
-let n = username.val();
-socket.emit('new-user-joined', n);
+btn.addEventListener('click', function(e){
+    e.preventDefault();
+    let n = username.value;
+    socket.emit('new-user-joined', n);
+});
 
 socket.on('receive', data => {
     append(`${data.name}: ${data.message}`, 'left');
