@@ -1,4 +1,4 @@
-var socket = io('http://localhost:8000');
+var socket = io.connect();
 var audio = new Audio('tone.mp3');
 
 var form = document.getElementById('form');
@@ -7,25 +7,21 @@ var fileInput = document.getElementById('formFile');
 var container = document.querySelector('.chatbox');
 var username = document.getElementById('nametext');
 var btn = document.getElementById('join');
+var logout = document.getElementById('logout');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (input.value != '') {
         var message = input.value;
-        append(`You: ${message}`, 'right');
+        append(`You \n ${message}`, 'right');
         if (input.value) {
             socket.emit('send', message);
             input.value = '';
         }
-    }
-    else {
-        var file = fileInput.value;
-        append(`You: ${file}`, 'right');
-        if (fileInput.value) {
-            socket.emit('send', file);
-            fileInput.value = '';
-        }
-    }
+});
+
+fileInput.addEventListener('click', (e) =>{
+    e.preventDefault();
+
 });
 
 const append = (message, position) => {
@@ -50,9 +46,19 @@ btn.addEventListener('click', function(e){
 });
 
 socket.on('receive', data => {
-    append(`${data.name}: ${data.message}`, 'left');
+    append(`${data.name} \n ${data.message}`, 'left');
 });
 
+socket.on('permit', user =>{
+    alert(`${user} wants to join in..`);
+    append(`${user} joined the chat`, 'right');
+});
+
+logout.addEventListener('click', function(e){
+    socket.disconnect();
+    window.location.reload();
+});
 socket.on('left', name => {
     append(`${name} left the chat`, 'right');
 });
+

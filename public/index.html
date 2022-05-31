@@ -24,7 +24,9 @@
             <img class="d-inline-block" src="./logo.png" alt="v-chat" width="35" height="35">
             <span class="navbar-brand h1 text-white" id="logoname">V-Chat</span>
         </a>
+        <button type="submit" class="btn btn-primary" id="logout">Logout</button>
     </nav>
+
     <div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -38,23 +40,23 @@
                             <input type="text" id="nametext" class="form-control" placeholder="Enter your Name">
                         </div>
                         <button type="submit" class="btn btn-primary" id="join">Join</button>
+                        <button type="submit" class="btn btn-secondary" id="cancel">Cancel</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="chatbox">
             <h4>Welcome to Chat Arena</h4>
             <p>// Happy Chatting //</p>
-            <div class="chat right">
-            </div>
-            <div class="chat left">
-            </div>
+            <div class="chat right" style="visibility:hidden"></div>
+            <div class="chat left" style="visibility:hidden"></div>
         </div>
         <form id="form">
             <div class="form-group row">
-                <div class="col-12 col-sm-2"></div>
+                <div class="col-12 col-sm-2 hide"></div>
                 <div class="col-12 col-sm-6">
                     <input type="text" class="form-control" id="text" placeholder="Type your message">
                 </div>
@@ -70,7 +72,7 @@
             </div>
         </form>
     </div>
-    
+
     <!-- Bootstrap JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -102,6 +104,7 @@
             e.preventDefault();
             $("#myModal").modal('hide');
         });
+
     </script>
 
 </body>

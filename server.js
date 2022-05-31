@@ -5,20 +5,28 @@ const server = http.createServer(app);
 const io = require('socket.io')(server);
 
 const users = {};
+var count = 0;
 
-io.on('connection', socket =>{
-    socket.on('new-user-joined', name=>{
-        console.log(`${name} connected..`);
-        users[socket.id] = name;
-        socket.broadcast.emit('user-joined', name);
+io.on('connection', socket => {
+    socket.on('new-user-joined', name => {
+        count++;
+        if (count != 1) {
+            console.log(`${name} connected..`);
+            users[socket.id] = name;
+            socket.broadcast.emit('permit', name);
+        } else {
+            console.log(`${name} connected..`);
+            users[socket.id] = name;
+            socket.broadcast.emit('user-joined', name);
+        }
     });
 
-    socket.on('send', message=>{
+    socket.on('send', message => {
         console.log(message);
-        socket.broadcast.emit('receive', {message: message, name: users[socket.id]});
+        socket.broadcast.emit('receive', { message: message, name: users[socket.id] });
     });
 
-    socket.on('disconnect', data=>{
+    socket.on('disconnect', data => {
         console.log(`${users[socket.id]} disconnected..`);
         socket.broadcast.emit('left', users[socket.id]);
         delete users[socket.id];
@@ -27,6 +35,6 @@ io.on('connection', socket =>{
 
 app.use(express.static("public"));
 
-server.listen(8000, ()=>{
+server.listen(8000, () => {
     console.log("Server runnning on http://localhost:8000");
 });
