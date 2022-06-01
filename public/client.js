@@ -13,6 +13,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
         var message = input.value;
         append(`You \n ${message}`, 'right');
+        container.scrollTop = container.scrollHeight;
         if (input.value) {
             socket.emit('send', message);
             input.value = '';
@@ -37,6 +38,7 @@ const append = (message, position) => {
 
 socket.on('user-joined', name => {
     append(`${name} joined the chat`, 'right');
+    container.scrollTop = container.scrollHeight;
 });
 
 btn.addEventListener('click', function(e){
@@ -47,11 +49,13 @@ btn.addEventListener('click', function(e){
 
 socket.on('receive', data => {
     append(`${data.name} \n ${data.message}`, 'left');
+    container.scrollTop = container.scrollHeight;
 });
 
 socket.on('permit', user =>{
     alert(`${user} wants to join in..`);
     append(`${user} joined the chat`, 'right');
+    container.scrollTop = container.scrollHeight;
 });
 
 logout.addEventListener('click', function(e){
@@ -60,5 +64,6 @@ logout.addEventListener('click', function(e){
 });
 socket.on('left', name => {
     append(`${name} left the chat`, 'right');
+    container.scrollTop = container.scrollHeight;
 });
 
