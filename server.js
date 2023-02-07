@@ -4,6 +4,16 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+
+app.post("/upload", upload.single("image"), (req, res) => {
+  io.emit("image", { image: true, buffer: req.file.buffer });
+  res.send();
+});
+
 const users = {};
 var count = 0;
 
@@ -25,6 +35,10 @@ io.on('connection', socket => {
         console.log(message);
         socket.broadcast.emit('receive', { message: message, name: users[socket.id] });
     });
+
+    socket.on("image", data => {
+        io.emit("image", data);
+      });
 
     socket.on('disconnect', data => {
         console.log(`${users[socket.id]} disconnected..`);

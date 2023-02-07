@@ -12,7 +12,7 @@ var logout = document.getElementById('logout');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
         var message = input.value;
-        append(`You \n ${message}`, 'right');
+        append(`You: \n ${message}`, 'right');
         container.scrollTop = container.scrollHeight;
         if (input.value) {
             socket.emit('send', message);
@@ -20,9 +20,25 @@ form.addEventListener('submit', (e) => {
         }
 });
 
-fileInput.addEventListener('click', (e) =>{
-    e.preventDefault();
+socket.on("image", data => {
+  const image = document.createElement("img");
+  image.src = `data:image/jpeg;base64,${Buffer.from(data.buffer).toString(
+    "base64"
+  )}`;
+  append(image);
+});
 
+fileInput.addEventListener('onchange', (e) =>{
+    e.preventDefault();
+        const file = fileInput.files[0];
+        const box = document.getElementById("filebox");
+        let inp = "";
+            let reader = new FileReader();
+            reader.addEventListener("load", () => {
+                inp = reader.result;
+                append(inp,'right');
+            });
+            reader.readAsDataURL(file);
 });
 
 const append = (message, position) => {
@@ -48,7 +64,7 @@ btn.addEventListener('click', function(e){
 });
 
 socket.on('receive', data => {
-    append(`${data.name} \n ${data.message}`, 'left');
+    append(`${data.name}: \n ${data.message}`, 'left');
     container.scrollTop = container.scrollHeight;
 });
 

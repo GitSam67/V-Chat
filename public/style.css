@@ -58,7 +58,7 @@ form{
 .chat{
     margin: 10px;
     width: fit-content;
-    max-width: 30%;
+    max-width: 70%;
     border: 2px solid rgb(9, 132, 189);
     border-radius: 10px;
     background-color: rgb(9, 132, 189);
