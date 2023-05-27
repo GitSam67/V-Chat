@@ -14,7 +14,7 @@ var onlineUsers = document.getElementById('onlineUsers');
 var typingUsers = document.getElementById('typingUsers');
 
 
-btn.addEventListener('click', function(e){
+btn.addEventListener('click', function(e) {
     e.preventDefault();
     let n = username.value;
     let r = roomname.value;
@@ -33,7 +33,8 @@ form.addEventListener('submit', (e) => {
         }
 });
 
-input.addEventListener('change', () => {
+input.addEventListener('change', (e) => {
+    e.preventDefault();
     if (input.value == "") {
         console.log("empty");
         typingUsers.innerHTML = "";
@@ -46,6 +47,7 @@ input.addEventListener('change', () => {
 })
 
 fileInput.addEventListener('change', (e) => {
+    e.preventDefault();
     const data = URL.createObjectURL(e.target.files[0]);
     console.log(data);
     sendImg(data, 'right');      
@@ -120,7 +122,8 @@ socket.on('receive-image', data => {
     audio.play();
 });
 
-logout.addEventListener('click', function(e){
+logout.addEventListener('click', function(e) {
+    e.preventDefault();
     socket.disconnect();
     socket.emit('typingEmpty', {name: username.value, room: roomname.value});
     window.location.reload();
