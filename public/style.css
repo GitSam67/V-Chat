@@ -313,11 +313,13 @@ body.modal-open nav {
 
 @media (min-width: 280px) and (max-width: 398px) {
     .col-sm-6 {
-        margin-right: 10px;
+        width: 90%;
+        margin-right: 70px;
     }
-
+    
     .col {
         width: 5%;
+        margin-right: 0px;
         margin-left: 2px;
     }
 
@@ -325,6 +327,10 @@ body.modal-open nav {
         width: 5%;
         margin-right: -90px;
         margin-left: -20px;
+    }
+    
+    #text {
+        width: 190px;
     }
 
     .hide {
@@ -343,7 +349,6 @@ body.modal-open nav {
     .image {
         width: 195px;
         height: 195px;
-        /* max-height: 91%; */
     }
 
     #logout {
