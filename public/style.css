@@ -331,7 +331,11 @@ body.modal-open nav {
     .hide {
         visibility: collapse;
     }
-        
+    
+    .chatbox {
+        width: 95%;
+    }
+
     .imageBox {
         width: 200px;
         height: 200px;
