@@ -1,54 +1,101 @@
 const express = require('express');
 const app = express();
 const http = require('http');
+const port = process.env.PORT || 8000;
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 
-const multer = require("multer");
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
+app.use(express.static("public"));
 
+const users = [];
+let user = {};
 
-app.post("/upload", upload.single("image"), (req, res) => {
-  io.emit("image", { image: true, buffer: req.file.buffer });
-  res.send();
-});
+const currentUser = (id) => {
+    return users.find(user => user.id === id);
+};
 
-const users = {};
-var count = 0;
+const getRoomUsers = (room) => {
+    return users.filter(user => user.room == room);
+}
+
+const deleteUser = (id) => {
+    let index = users.findIndex(user => user.id == id);
+    if(index != -1) {
+        return users.splice(index, 1)[0];
+    }
+}
 
 io.on('connection', socket => {
-    socket.on('new-user-joined', name => {
-        count++;
-        if (count != 1) {
-            console.log(`${name} connected..`);
-            users[socket.id] = name;
-            socket.broadcast.emit('permit', name);
-        } else {
-            console.log(`${name} connected..`);
-            users[socket.id] = name;
-            socket.broadcast.emit('user-joined', name);
-        }
+    socket.on('new-user-joined', data => {
+        user = {id: socket.id, name: data.name, room: data.room};
+        users.push(user);
+
+        socket.join(user.room);
+
+        console.log(`${user.name} connected..`);
+        console.log(`Room name: ${user.room}`);
+
+        // display user & room info
+        io.to(user.room).emit('roomUsers', {
+            room: user.room,
+            users: getRoomUsers(user.room)
+        });
+
+        // users[socket.id] = user.name;
+        socket.broadcast.to(user.room).emit('user-joined', user.name);
+
     });
 
     socket.on('send', message => {
         console.log(message);
-        socket.broadcast.emit('receive', { message: message, name: users[socket.id] });
+
+        const user = currentUser(socket.id);
+        console.log(user);
+
+        //exclude sender
+        socket.broadcast.to(user.room).emit('receive', { message: message, name: user.name });
     });
 
-    socket.on("image", data => {
-        io.emit("image", data);
-      });
+    socket.on('image', data => {
+        console.log(data);
+
+        const user = currentUser(socket.id);
+
+        //exclude sender
+        socket.broadcast.to(user.room).emit('receive-image', 
+            {
+              img: data,
+              name : user.name
+            }
+        );
+    });
+
+    socket.on('typing', data => {
+        socket.broadcast.to(data.room).emit('typing', data.name);
+    })
+
+    socket.on('typingEmpty', data => {
+        socket.broadcast.to(data.room).emit('typingEmpty');
+    })
 
     socket.on('disconnect', data => {
-        console.log(`${users[socket.id]} disconnected..`);
-        socket.broadcast.emit('left', users[socket.id]);
-        delete users[socket.id];
+        const user = deleteUser(socket.id);
+        if(user) {
+            console.log(`${user.name} disconnected..`);
+            socket.broadcast.to(user.room).emit('left', user.name);
+            socket.broadcast.to(user.room).emit('typingEmpty');
+            console.log(users);
+            
+            // display user & room info
+            io.to(user.room).emit('roomUsers', {
+                room: user.room,
+                users: getRoomUsers(user.room)
+            });
+        }
     });
 });
 
-app.use(express.static("public"));
 
-server.listen(8000, () => {
-    console.log("Server runnning on http://localhost:8000");
+server.listen(port, () => {
+    console.log(`Server runnning on http://localhost:${port}`);
 });

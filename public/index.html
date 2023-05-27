@@ -21,11 +21,18 @@
 
 <body>
     <nav class="navbar navbar-light bg-dark">
-        <a class="navbar-brand" href="#">
-            <img class="d-inline-block" src="./logo.png" alt="v-chat" width="35" height="35">
-            <span class="navbar-brand h1 text-white" id="logoname">V-Chat</span>
-        </a>
-        <button type="submit" class="btn btn-primary" id="logout">Logout</button>
+        <div class="logo">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="./logo.png" alt="v-chat" width="30" height="30">
+                <span class="navbar-brand h1 text-white" id="logoname">V-Chat</span>
+            </a>
+        </div>
+        <div class="room">
+            <h4 id="roomDiv"></h4>
+        </div>
+        <div class="leave">
+            <button type="submit" id="logout">Leave Room</button>
+        </div>
     </nav>
 
     <div id="myModal" class="modal fade">
@@ -38,7 +45,8 @@
                 <div class="modal-body">
                     <form id="form2">
                         <div class="form-group">
-                            <input type="text" id="nametext" class="form-control" placeholder="Enter your Name">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+                            <input type="text" id="room" name="room" class="form-control" placeholder="Enter room name" required>
                         </div>
                         <button type="submit" class="btn btn-primary" id="join">Join</button>
                         <button type="submit" class="btn btn-secondary" id="cancel">Cancel</button>
@@ -50,19 +58,25 @@
 
     <div class="container">
         <div class="chatbox">
-            <h4>Welcome to Chat Arena</h4>
-            <p>// Happy Chatting //</p>
+            <div class="info">
+                <div class="online"> Online: 
+                    <span id="onlineUsers"></span>
+                </div>
+                <div class="typing"> 
+                    <span id="typingUsers"></span>
+                </div>
+            </div>
             <div class="chat right" style="visibility:hidden"></div>
             <div class="chat left" style="visibility:hidden"></div>
         </div>
-        <form id="form">
+        <form id="form" enctype="multipart/form-data">
             <div class="form-group row">
                 <div class="col-12 col-sm-2 hide"></div>
                 <div class="col-12 col-sm-6">
-                    <input type="text" class="form-control" id="text" placeholder="Type your message">
+                    <input type="text" class="form-control" name="text" id="text" placeholder="Type your message">
                 </div>
                 <div class="col-12 col-sm-1">
-                    <input class="form-control file" type="file" id="formFile" name="upload" accept="image/png, image/jpg, image/jpeg" hidden>
+                    <input class="form-control file" type="file" id="formFile" name="file" accept="image/*" hidden>
                     <label for="formFile"><i class="fa-solid fa-paperclip fa-xl" data-toggle="tooltip"
                             data-placement="bottom" title="Attach file"></i></label>
                 </div>

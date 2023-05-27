@@ -1,81 +1,188 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
 
-body{
-    background-color: black;
-}
-p{
-    text-align : center;
-}
-#logoname{
-    margin: 0px 10px;
-}
-
-#logout{
-    float: right;
-    background-color:rgb(58, 106, 252);
-}
-
-#logout:hover{
+body {
     background-color: black;
 }
 
-.chatbox{
+p {
+    text-align: center;
+}
+
+.navbar {
+    padding: 2px 7px;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1px;
+    width: 20%;
+}
+
+.room {
+    text-align: center;
+    padding: 0px;
+    padding-top: 7px;
+    margin-bottom: 0px;
+    width: 60%;
+}
+
+.leave {
+    width: 20%;
+}
+
+#logo {
+    transform: translateY(-3px);
+    border-radius: 100%;
+}
+
+#logoname {
+    background: -webkit-linear-gradient(violet, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0px 5px;
+    font-size: larger;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#name {
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+#room {
+    width: 80%;
+}
+
+#join {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.online {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+
+#onlineUsers {
+    font-weight: lighter;
+    letter-spacing: 1px;
+    word-spacing: 10px;
+}
+
+.info {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px;
+    padding-left: 10px;
+    border-radius: 10px;
+    border-bottom: 2px solid darkslategray;
+    background-color: black;
+    opacity: 100%;
+}
+
+.typing {
+    padding-left: 5px;
+}
+
+#typingUsers {
+    color: rgb(4, 224, 4);
+}
+
+.chatbox {
     border: 2px solid rgb(9, 132, 189);
     width: 70%;
     margin: auto;
     margin-top: 2px;
-    height: 70vh;
+    height: 75vh;
     overflow-y: auto;
     background-color: black;
     color: white;
     border-radius: 7px;
 }
 
-#text{
+#text {
     border: 2px solid black;
 }
 
-form{
+form {
     margin: 10px;
 }
 
-.chatbox h4{
+.chatbox h4 {
     text-align: center;
 }
 
-.col-12{
+.col-12 {
     padding-right: 0px;
 }
 
-.col-sm-1{
+.col-sm-1 {
     margin-left: -5px;
     margin-right: -9px;
 }
 
-.chat{
+.chat {
     margin: 10px;
+    margin-top: 5px;
     width: fit-content;
     max-width: 70%;
-    border: 2px solid rgb(9, 132, 189);
+    border: 2px solid darkslategray;
     border-radius: 10px;
-    background-color: rgb(9, 132, 189);
+    background-color: darkslategray;
+    font-weight: bold;
     color: white;
     padding-left: 10px;
     padding-right: 15px;
 }
-.right{
+
+.imageBox {
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    background-color: darkslategray;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    text-indent: 4px;
+    color: white;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    padding: 1px 1px;
+}
+
+.image {
+    width: 295px;
+    height: 295px;
+    max-height: 91%;
+    border-radius: 10px;
+    margin-top: 2px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.right {
     float: right;
     clear: both;
 }
-.left{
+
+.left {
     float: left;
     clear: both;
 }
 
-label{
+label {
     background-color: white;
     cursor: pointer;
     color: black;
@@ -86,142 +193,256 @@ label{
     margin: 0px 15px;
 }
 
-label:hover{
-    border-color:rgb(9, 132, 189);
+label:hover {
+    border-color: rgb(9, 132, 189);
     background-color: black;
     color: white;
 }
 
-.btn:hover{
-    border-color:rgb(9, 132, 189);
+.btn:hover {
+    border-color: rgb(9, 132, 189);
     background-color: black;
     color: white;
 }
 
-#text:hover{
-    border-color:rgb(9, 132, 189);
+#roomDiv {
+    color: white;
+    text-shadow: 20px;
+    margin-bottom: 0px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 1px;
+}
+
+#logout {
+    float: right;
+    border-color: red;
+    background-color: red;
+    font-size: medium;
+    color: white;
+    padding: 5px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+#logout:hover {
+    border-color: darkred;
+    background-color: darkred;
+    color: white;
+    cursor: pointer;
+}
+
+#text:hover {
+    border-color: rgb(9, 132, 189);
     background-color: black;
     color: white;
 }
 
-body.modal-open .container{
-    filter : blur(5px);
-}
-body.modal-open nav{
-    filter : blur(5px);
+body.modal-open .container {
+    filter: blur(5px);
 }
 
-@media only screen and (max-width: 990px){
-    .col-12{
+body.modal-open nav {
+    filter: blur(5px);
+}
+
+
+::-webkit-scrollbar{
+    width: 2px;
+}
+
+::-webkit-scrollbar-track{
+    background: white;
+}
+
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(rgb(5, 128, 217), rgb(5, 128, 217));
+    border-radius: 25px; 
+}
+
+@media only screen and (max-width: 990px) {
+    .col-12 {
         max-width: 45%;
         margin-left: 0%;
     }
-    .col{
+
+    .col {
         margin-left: 20px;
     }
-    label{
+
+    label {
         margin-right: 0px;
     }
 }
-@media only screen and (max-width: 760px){
-    .col-12{
+
+@media only screen and (max-width: 760px) {
+    .col-12 {
         max-width: 40%;
         margin-left: 0%;
     }
-    .col{
+
+    .col {
         margin-left: 10px;
     }
-    label{
+
+    label {
         margin-right: 0px;
         margin-left: 1px;
     }
 }
-@media only screen and (max-width: 575px){
-    .col-sm-6{
+
+@media only screen and (max-width: 575px) {
+    .col-sm-6 {
         width: 30%;
         margin-left: -125px;
     }
-    .col{
-        width: 20%; 
+
+    .col {
+        width: 20%;
         margin-left: 2px;
     }
-    .col-sm-1{
+
+    .col-sm-1 {
         width: 20%;
         margin-right: -150px;
     }
-    .hide{
+
+    .hide {
         visibility: collapse;
     }
 }
-@media (min-width: 280px) and (max-width: 398px){
-    .col-sm-6{
+
+@media (min-width: 280px) and (max-width: 398px) {
+    .col-sm-6 {
         width: 10%;
         margin-left: -85px;
     }
-    .col{
-        width: 5%; 
+
+    .col {
+        width: 5%;
         margin-left: 2px;
     }
-    .col-sm-1{
+
+    .col-sm-1 {
         width: 5%;
         margin-right: -90px;
         margin-left: -10px;
     }
-    .hide{
+
+    .hide {
         visibility: collapse;
     }
+        
+    .imageBox {
+        width: 200px;
+        height: 200px;
+    }
+
+    .image {
+        width: 195px;
+        height: 195px;
+        /* max-height: 91%; */
+    }
+
+    #logout {
+        font-size: small;
+        padding: 5px;
+    }
+
+    #logoname {
+        font-size: large;
+    }
+
+    #roomDiv {
+        font-size: large;
+    }
+
+    .online {
+        font-size: medium;
+    }
+
+    #onlineUsers {
+        font-size: small;
+    }
+    
+    #typingUsers {
+        font-size: small;
+    }
+
+    .logo {
+        width: 30%;
+    }
+
+    .room {
+        width: 30%;
+    }
+
+    .leave {
+        width: 30%;
+    }
 }
-@media (min-width: 400px) and (max-width: 575px){
-    .col-sm-6{
+
+@media (min-width: 400px) and (max-width: 575px) {
+    .col-sm-6 {
         width: 20%;
         margin-left: -105px;
     }
-    .col{
-        width: 10%; 
+
+    .col {
+        width: 10%;
         margin-left: 30px;
     }
-    .col-sm-1{
+
+    .col-sm-1 {
         width: 10%;
         margin-right: -125px;
         margin-left: 0px;
     }
-    .hide{
+
+    .hide {
         visibility: collapse;
     }
 }
-@media only screen and (width: 540px){
-    .col-sm-6{
+
+@media only screen and (width: 540px) {
+    .col-sm-6 {
         width: 10%;
         margin-left: -130px;
     }
-    .col{
-        width: 5%; 
+
+    .col {
+        width: 5%;
         margin-left: 0px;
     }
-    .col-sm-1{
+
+    .col-sm-1 {
         width: 5%;
         margin-right: -135px;
         margin-left: 5px;
     }
-    .hide{
+
+    .hide {
         visibility: collapse;
     }
 }
-@media (width: 280px){
-    .col-sm-6{
+
+@media (width: 280px) {
+    .col-sm-6 {
         width: 10%;
         margin-left: -85px;
     }
-    .col{
-        width: 5%; 
+
+    .col {
+        width: 5%;
         margin-left: 2px;
     }
-    .col-sm-1{
+
+    .col-sm-1 {
         width: 5%;
         margin-right: -60px;
         margin-left: -10px;
     }
-    .hide{
+
+    .hide {
         visibility: collapse;
     }
 }
