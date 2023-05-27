@@ -313,8 +313,8 @@ body.modal-open nav {
 
 @media (min-width: 280px) and (max-width: 398px) {
     .col-sm-6 {
-        width: 10%;
-        margin-left: -85px;
+        width: 20%;
+        margin-left: -65px;
     }
 
     .col {
@@ -331,7 +331,7 @@ body.modal-open nav {
     .hide {
         visibility: collapse;
     }
-    
+
     .chatbox {
         width: 95%;
     }
