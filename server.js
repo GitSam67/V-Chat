@@ -1,8 +1,8 @@
-import express from 'express';
+const express = require('express');
 const app = express();
-import { createServer } from 'http';
+const http = require('http');
 const port = process.env.PORT || 8000;
-const server = createServer(app);
+const server = http.createServer(app);
 const io = require('socket.io')(server);
 
 app.use(express.static("public"));
