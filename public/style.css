@@ -312,10 +312,9 @@ body.modal-open nav {
 }
 
 @media (min-width: 280px) and (max-width: 398px) {
-    /* .col-sm-6 {
-        width: 40%;
-        margin-left: -10px;
-    } */
+    .col-sm-6 {
+        margin-right: 10px;
+    }
 
     .col {
         width: 5%;
